@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\contact;
 use Illuminate\Http\Request;
 
 class Websitecontroller extends Controller
@@ -36,6 +37,23 @@ class Websitecontroller extends Controller
         return view('website.layouts.contact');
        }
 
+    // post contact
+  public function storecontact(Request $request){
+  $contact = new contact();
+   $contact->name = $request->contact_name;
+   $contact->email = $request->contact_email;
+   $contact->subject = $request->contact_subject;
+   $contact->message = $request->contact_message;
+  $contact->save();
 
+
+  return redirect()->back()->with('alert', [
+    'type' => 'success',
+    'message' => 'Success! Your contact message was sent.'
+]);
+
+
+
+  }
 
 }

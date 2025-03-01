@@ -1,5 +1,5 @@
-@include('website.layouts.navbar');
-@yield('main_section');
+@include('website.layouts.navbar')
+@yield('main_section')
 
     <!-- Footer Start -->
     <div class="footer container-fluid position-relative bg-dark py-5" style="margin-top: 90px;">
@@ -94,6 +94,21 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var alertBox = document.getElementById('successAlert');
+        if (alertBox) {
+            alertBox.style.display = 'flex';
+            setTimeout(function() {
+                alertBox.style.display = 'none';
+            }, 4000);
+        }
+    });
+</script>
+
+    </script>
+
 </body>
 
 </html>

@@ -73,26 +73,26 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav m-auto py-0">
-                    <a href="/" class="nav-item nav-link active">Home</a>
-                    <a href="/about" class="nav-item nav-link">About</a>
-                    <a href="/Services" class="nav-item nav-link">Services</a>
-                    <a href="/Pricing" class="nav-item nav-link">Pricing</a>
+                    <a href="/" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
+                    <a href="/about" class="nav-item nav-link {{ Request::is('about') ? 'active' : '' }}">About</a>
+                    <a href="/Services" class="nav-item nav-link {{ Request::is('Services') ? 'active' : '' }}">Services</a>
+                    <a href="/Pricing" class="nav-item nav-link {{ Request::is('Pricing') ? 'active' : '' }}">Pricing</a>
+
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a href="#" class="nav-link dropdown-toggle {{ Request::is('Apointment','Open_Hours','Our_Team','Testimonial') ? 'active' : '' }} " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Pages
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a href="/Apointment" class="dropdown-item">Appointment</a>
-                            <a href="/Open_Hours" class="dropdown-item">Open Hours</a>
-                            <a href="/Our_Team" class="dropdown-item">Our Team</a>
-                            <a href="/Testimonial" class="dropdown-item">Testimonial</a>
+                            <a href="/Apointment" class="dropdown-item {{ Request::is('Apointment') ? 'active' : '' }} ">Appointment</a>
+                            <a href="/Open_Hours" class="dropdown-item {{ Request::is('Open_Hours') ? 'active' : '' }} ">Open Hours</a>
+                            <a href="/Our_Team" class="dropdown-item {{ Request::is('Our_Team') ? 'active' : '' }} ">Our Team</a>
+                            <a href="/Testimonial" class="dropdown-item {{ Request::is('Testimonial') ? 'active' : '' }} ">Testimonial</a>
                         </div>
                     </div>
 
-                    <a href="/Contact" class="nav-item nav-link">Contact</a>
+                    <a href="/Contact" class="nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">Contact</a>
                 </div>
                 <a href="" class="btn btn-primary d-none d-lg-block">Book Now</a>
             </div>
-        </nav>
-    </div>
-    <!-- Navbar End -->
+            </nav>
+            <!-- Navbar End -->

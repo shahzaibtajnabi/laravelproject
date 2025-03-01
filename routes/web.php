@@ -1,20 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admincontroller;
 use App\Http\Controllers\Websitecontroller;
 use App\Http\Controllers\DatabaseController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
+    //  admin route
+Route::get('/welcome/admin', [Admincontroller::class ,'adminindex'])->name('admin_index');
+Route::get('/contactview', [Admincontroller::class ,'admincontact'])->name('insertcontact');
+
+
+
+      // user route
 Route::get('/', [Websitecontroller::class, 'firstview'])->name('firstview');
 Route::get('/about', [Websitecontroller::class, 'about'])->name('about');
 Route::get('/Services', [Websitecontroller::class, 'services'])->name('Our-Services');
@@ -27,6 +25,13 @@ Route::get('/Testimonial', [Websitecontroller::class, 'testimonial'])->name('tes
    // enddrowpdown
 Route::get('/Contact', [Websitecontroller::class, 'Contact'])->name('Contact');
 
-// Route::get('/customers', [DatabaseController::class , 'getCustomerView']);
+    // contact post
+Route::post('/contactsave',[Websitecontroller::class, 'storecontact'])->name('contactsave');
 
-// Route::post('/customers', [DatabaseController::class, 'storeCustomers'])->name('customer-store');
+
+
+
+
+// Route::get('/check', [DatabaseController::class, 'getCustomerView'])->name('getCustomerView');
+
+// Route::post('/customer-store',[DatabaseController::class, 'storeCustomers'])->name('customer-store');
