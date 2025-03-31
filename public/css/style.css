@@ -43,6 +43,301 @@
 }
 
 
+.product-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+}
+
+.product-image {
+    flex: 1;
+    text-align: center;
+}
+
+.product-image img {
+    max-width: 100%;
+    height: 350px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.product-details {
+    flex: 1;
+    padding: 20px;
+}
+
+.product-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.product-price {
+    font-size: 22px;
+    color: rgb(255, 152, 170);
+    font-weight: bold;
+}
+
+.product-price del {
+    color: #888;
+    font-size: 16px;
+    margin-left: 8px;
+}
+
+.rating {
+    color: #ff9900;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+/* Quantity Selector */
+.quantity-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    border: 2px solid rgb(255, 152, 170);
+    border-radius: 50px;
+    padding: 5px;
+    background-color: rgb(255, 235, 238);
+}
+
+.quantity-btn {
+    background-color: rgb(255, 152, 170);
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    border: 2px solid rgb(255, 152, 170);
+    font-size: 16px;
+    background: white;
+    border-radius: 8px;
+    padding: 5px;
+    font-weight: bold;
+}
+
+/* Purchase Button */
+.purchase-btn {
+    background-color: rgb(255, 152, 170);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.purchase-btn:hover {
+    background-color: rgb(255, 192, 203);
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .product-details {
+        padding: 10px;
+    }
+
+    .product-image img {
+        height: 250px;
+    }
+
+    .button-container {
+        flex-direction: column;
+    }
+}
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity-btn {
+    width: 35px;
+    height: 35px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-btn:hover {
+    background-color: #0056b3;
+}
+
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 35px;
+    background-color: #f8f9fa;
+}
+
+.total-price-container {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+.total-price-label {
+    color: #007bff;
+}
+
+.total-price-value {
+    color: #28a745;
+}
+        @keyframes scrollRight {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+.scroll-container {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+.scroll-content {
+    display: flex;
+    animation: scrollRight 10s linear infinite;
+    gap: 1rem;
+}
+.scroll-content:hover {
+    animation-play-state: paused;
+}
+
+/* -----carousel work */
+
+.carousel-container {
+    position: relative;
+    max-width: 90%;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.card {
+    min-width: 200px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    margin: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-color: white;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.card h3 {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.card p {
+    font-size: 14px;
+    color: #777;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.add-to-cart {
+    display: inline-block;
+    background: white;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.add-to-cart:hover {
+    background:#007bff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        min-width: 120px;
+    }
+}
 
     /*  pink penther Alert Box Centered */
     #successAlert {

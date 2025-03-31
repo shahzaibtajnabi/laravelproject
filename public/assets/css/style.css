@@ -13,6 +13,28 @@
   scroll-behavior: smooth;
 }
 
+/* pink penther Alert */
+#successAlert {
+    display: none; /* Default hidden */
+    position: fixed; /* Stay in place */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centering Trick */
+    background-color: #c494b1; /* Green */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999; /* Make sure it appears on top */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 300px;
+    max-width: 80%;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   background: #f6f9ff;

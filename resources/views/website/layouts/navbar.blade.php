@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+
     <meta charset="utf-8">
     <title>SPA Center - Beauty & Spa HTML Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -9,7 +9,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="{{asset('img/favicon.ico')}}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -17,18 +17,19 @@
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="{{asset('lib/animate/animate.min.css')}}" rel="stylesheet">
+    <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="{{asset('lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css')}}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-</head>
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" crossorigin="anonymous"></script>
 
+</head>
 <body>
-    <!-- Topbar Start -->
     <div class="container-fluid bg-light d-none d-lg-block">
         <div class="row py-2 px-lg-5">
             <div class="col-lg-6 text-left mb-2 mb-lg-0">
@@ -59,10 +60,8 @@
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
 
 
-    <!-- Navbar Start -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
             <a href="index.html" class="navbar-brand ml-lg-3">
@@ -72,27 +71,54 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
-                <div class="navbar-nav m-auto py-0">
-                    <a href="/" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
-                    <a href="/about" class="nav-item nav-link {{ Request::is('about') ? 'active' : '' }}">About</a>
-                    <a href="/Services" class="nav-item nav-link {{ Request::is('Services') ? 'active' : '' }}">Services</a>
-                    <a href="/Pricing" class="nav-item nav-link {{ Request::is('Pricing') ? 'active' : '' }}">Pricing</a>
+                <div class="navbar-nav m-auto py-0 d-flex align-items-center">
+                    <a href="/" class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a>
+                    <a href="/about" class="nav-item nav-link {{ request()->is('about') ? 'active' : '' }}">About</a>
+                    <a href="/Services" class="nav-item nav-link {{ request()->is('Services') ? 'active' : '' }}">Services</a>
+                    <a href="/Shopping" class="nav-item nav-link {{ request()->is('Shopping') ? 'active' : '' }}">Shopping</a>
+                    <a href="/Pricing" class="nav-item nav-link {{ request()->is('Pricing') ? 'active' : '' }}">Pricing</a>
 
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle {{ Request::is('Apointment','Open_Hours','Our_Team','Testimonial') ? 'active' : '' }} " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Pages
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a href="/Apointment" class="dropdown-item {{ Request::is('Apointment') ? 'active' : '' }} ">Appointment</a>
-                            <a href="/Open_Hours" class="dropdown-item {{ Request::is('Open_Hours') ? 'active' : '' }} ">Open Hours</a>
-                            <a href="/Our_Team" class="dropdown-item {{ Request::is('Our_Team') ? 'active' : '' }} ">Our Team</a>
-                            <a href="/Testimonial" class="dropdown-item {{ Request::is('Testimonial') ? 'active' : '' }} ">Testimonial</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="/Appointment" class="dropdown-item">Appointment</a>
+                            <a href="/Open_hours" class="dropdown-item">Open Hours</a>
+                            <a href="/Our_team" class="dropdown-item">Our Team</a>
+                            <a href="/Testimonial" class="dropdown-item">Testimonial</a>
                         </div>
                     </div>
 
-                    <a href="/Contact" class="nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">Contact</a>
+                    <a href="/Contact" class="nav-item nav-link {{ request()->is('Contact') ? 'active' : '' }}">Contact</a>
+
+                    @if (Route::has('login'))
+                        @auth
+                            <form id="logout-form" method="POST" action="{{ route('logout') }}" class="d-inline">
+                                @csrf
+                                <a href="#" class="nav-item nav-link text-danger me-2" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-sign-out-alt fs-6"></i> Log Out
+                                </a>
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}" class="nav-item nav-link me-2">
+                                <i class="fas fa-sign-in-alt fs-6"></i> Login
+                            </a>
+                            <a href="{{ route('register') }}" class="nav-item nav-link me-2">
+                                <i class="fas fa-user-plus fs-6"></i> Register
+                            </a>
+                        @endauth
+                    @endif
+
+                    <a href="/Cart" class="nav-item nav-link">
+                        <i class="fas fa-shopping-cart fs-6" style="height: 40px"></i>
+                    </a>
                 </div>
-                <a href="" class="btn btn-primary d-none d-lg-block">Book Now</a>
+
+
+                </div>
+
             </div>
-            </nav>
-            <!-- Navbar End -->
+
+
+            </div>
+        </nav>
+
